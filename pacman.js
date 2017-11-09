@@ -39,6 +39,7 @@ var clyde = {
 
 // replace this comment with your four ghosts setup as objects
 
+var ghosts = [inky, blinky, pinky, clyde]
 
 // Draw the screen functionality
 function drawScreen() {
@@ -62,6 +63,9 @@ function displayMenu() {
   console.log('\n\nSelect Option:\n');  // each \n creates a new line
   console.log('(d) Eat Dot');
   console.log('(q) Quit');
+  ghosts.forEach(function(ghost) {
+    console.log('(' + ghost.menu_option + ') ' + ghost.name);
+  })
 }
 
 function displayPrompt() {
