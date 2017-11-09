@@ -97,7 +97,11 @@ function eatGhost(ghost) {
 }
 
 function eatPowerPellet() {
-  console.log("\ntest");
+  powerPellets--
+  for (var i = 0; i < ghosts.length; i++) {
+    ghosts[i].edible = true
+  }
+  score += 50
 }
 
 var checkLives = function() {
