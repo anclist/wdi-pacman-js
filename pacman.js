@@ -1,6 +1,7 @@
 // Setup initial game stats
 var score = 0;
 var lives = 2;
+var powerPellets = 4;
 
 
 // Define your ghosts here
@@ -46,6 +47,7 @@ function drawScreen() {
   clearScreen();
   setTimeout(function() {
     displayStats();
+    displayPowerPellets();
     displayMenu();
     displayPrompt();
   }, 10);
@@ -59,14 +61,19 @@ function displayStats() {
   console.log('Score: ' + score + '     Lives: ' + lives);
 }
 
+function displayPowerPellets() {
+  console.log('\n\nPower-Pellets: ' + powerPellets);
+}
+
 function displayMenu() {
   console.log('\n\nSelect Option:\n');  // each \n creates a new line
   console.log('(d) Eat Dot');
-  console.log('(q) Quit');
+  console.log('(p) Eat Power-Pellet');
   ghosts.forEach(function(ghost) {
-      console.log('(' + ghost.menu_option + ') ' + ghost.name);
+    console.log('(' + ghost.menu_option + ') ' + ghost.name);
 
   })
+  console.log('(q) Quit');
 }
 
 function displayPrompt() {
@@ -89,6 +96,10 @@ function eatGhost(ghost) {
   }
 }
 
+function eatPowerPellet() {
+  console.log("\ntest");
+}
+
 var checkLives = function() {
   if (lives <= 0) {
     processInput('q')
@@ -105,6 +116,9 @@ function processInput(key) {
       break;
     case 'd':
       eatDot();
+      break;
+    case 'p':
+      eatPowerPellet();
       break;
     case '1':
       eatGhost(inky)
