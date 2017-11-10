@@ -72,7 +72,12 @@ function displayMenu() {
     console.log('(p) Eat Power-Pellet');
   }
   ghosts.forEach(function(ghost) {
-    console.log('(' + ghost.menu_option + ') ' + ghost.name);
+    if (ghost.edible) {
+      var isEdible = 'edible'
+    } else {
+      var isEdible = 'undedible'
+    }
+    console.log('(' + ghost.menu_option + ') ' + ghost.name + " (" + isEdible + ")");
 
   })
   console.log('(q) Quit');
@@ -95,6 +100,10 @@ function eatGhost(ghost) {
   if (ghost.edible == false) {
     console.log("\nThe " + ghost.colour + "ghost (" + ghost.name + ") took one of your lives");
     lives--
+  } else {
+    console.log("\nPac-man ate " + ghost.name);
+    score += 200
+    ghost.edible = false
   }
 }
 
@@ -109,8 +118,6 @@ function eatPowerPellet() {
     score += 50
   }
   }
-
-
 
 var checkLives = function() {
   if (lives <= 0) {
